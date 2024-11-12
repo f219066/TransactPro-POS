@@ -1,153 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Inventory Management - Spice POS</title>
-    <link rel="stylesheet" href="/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-    />
-  </head>
-  <body>
-    <div class="container">
-      <nav class="sidebar">
-        <div class="logo">
-          <img src="https://assets.codepen.io/t-1/sample-logo.svg" alt="Logo" />
-          <h2>Spice POS</h2>
-        </div>
-        <ul class="nav-links">
-          <li class="active" data-page="dashboard">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inventory Management - Spice POS</title>
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+
+<body>
+  <div class="container">
+    <nav class="sidebar">
+      <div class="logo">
+        <img src="https://assets.codepen.io/t-1/sample-logo.svg" alt="Logo" />
+        <h2>Spice POS</h2>
+      </div>
+      <ul class="nav-links">
+        <a href="index.html">
+          <li data-page="dashboard">
             <i class="fas fa-chart-line"></i>
             <span>Dashboard</span>
           </li>
-          <li data-page="inventory">
-            <i class="fas fa-boxes"></i>
-            <span>Inventory</span>
-          </li>
+        </a>
+        <li class="active" data-page="inventory">
+          <i class="fas fa-boxes"></i>
+          <span>Inventory</span>
+        </li>
+        <a href="#">
           <li data-page="customers">
             <i class="fas fa-users"></i>
             <span>Customers</span>
           </li>
+        </a>
+        <a href="accounts.html">
           <li>
-            <a href="accounts.html"
-              style="display: flex; align-items: center; gap: 1rem; padding: 0rem; margin: 0.5rem 0; border-radius: 8px; cursor: pointer; text-decoration: none; color: inherit; transition: background-color 0.3s;">
-              <i class="fas fa-book-open" style="width: 20px;"></i>
-              <span>Accounts</span>
-            </a>
+            <i class="fas fa-book-open" style="width: 20px;"></i>
+            <span>Accounts</span>
           </li>
-  
-        </ul>
-      </nav>
+        </a>
 
-      <main class="content">
-        <header>
-          <div class="search-bar">
-            <i class="fas fa-search"></i>
-            <input type="text" id="inventorySearch" placeholder="Search inventory..." />
-          </div>
-          <div class="inventory-controls">
-            <select id="categoryFilter" class="category-filter">
-              <option value="all">All Categories</option>
-              <option value="Spices">Spices</option>
-              <option value="Grains">Grains</option>
-              <option value="Oils">Oils</option>
-              <option value="Pulses">Pulses</option>
-              <option value="Others">Others</option>
-            </select>
-            <button id="addItemBtn" class="btn-primary">
-              <i class="fas fa-plus"></i> Add Item
-            </button>
-            <button class="btn-secondary">
-              <i class="fas fa-file-export"></i> Export
-            </button>
-          </div>
-        </header>
+      </ul>
+    </nav>
 
-        <div class="inventory-stats">
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-box"></i>
-            </div>
-            <div class="stat-details">
-              <h3>Total Items</h3>
-              <p id="totalItems">0</p>
-            </div>
+    <main class="content">
+      <header>
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" id="inventorySearch" placeholder="Search inventory..." />
+        </div>
+        <div class="inventory-controls">
+          <select id="categoryFilter" class="category-filter">
+            <option value="all">All Categories</option>
+            <option value="Spices">Spices</option>
+            <option value="Grains">Grains</option>
+            <option value="Oils">Oils</option>
+            <option value="Pulses">Pulses</option>
+            <option value="Others">Others</option>
+          </select>
+          <button id="addItemBtn" class="btn-primary">
+            <i class="fas fa-plus"></i> Add Item
+          </button>
+          <button class="btn-secondary">
+            <i class="fas fa-file-export"></i> Export
+          </button>
+        </div>
+      </header>
+
+      <div class="inventory-stats">
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-box"></i>
           </div>
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-exclamation-triangle"></i>
-            </div>
-            <div class="stat-details">
-              <h3>Low Stock Items</h3>
-              <p id="lowStockItems">0</p>
-            </div>
-          </div>
-          <div class="stat-card">
-            <div class="stat-icon">
-              <i class="fas fa-money-bill-wave"></i>
-            </div>
-            <div class="stat-details">
-              <h3>Total Value</h3>
-              <p id="inventoryValue">Rs. 0.00</p>
-            </div>
+          <div class="stat-details">
+            <h3>Total Items</h3>
+            <p id="totalItems">0</p>
           </div>
         </div>
-
-        <div class="inventory-grid" id="inventoryGrid"></div>
-
-        <!-- Add/Edit Item Modal -->
-        <div id="addItemModal" class="modal">
-          <div class="modal-content">
-            <h2>Add New Item</h2>
-            <form id="itemForm">
-              <div class="form-group">
-                <label for="itemName">Item Name</label>
-                <input type="text" id="itemName" name="itemName" required>
-              </div>
-              <div class="form-group">
-                <label for="category">Category</label>
-                <select id="category" name="category" required>
-                  <option value="Spices">Spices</option>
-                  <option value="Grains">Grains</option>
-                  <option value="Oils">Oils</option>
-                  <option value="Pulses">Pulses</option>
-                  <option value="Others">Others</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="stock">Stock</label>
-                <input type="number" id="stock" name="stock" min="0" step="0.01" required>
-              </div>
-              <div class="form-group">
-                <label for="unit">Unit</label>
-                <select id="unit" name="unit" required>
-                  <option value="kg">Kilogram (kg)</option>
-                  <option value="g">Gram (g)</option>
-                  <option value="l">Liter (l)</option>
-                  <option value="ml">Milliliter (ml)</option>
-                  <option value="pcs">Pieces (pcs)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="price">Price per Unit</label>
-                <input type="number" id="price" name="price" min="0" step="0.01" required>
-              </div>
-              <div class="form-group">
-                <label for="minStock">Minimum Stock Level</label>
-                <input type="number" id="minStock" name="minStock" min="0" step="0.01" required>
-              </div>
-              <div class="form-actions">
-                <button type="submit" class="btn-primary">Save Item</button>
-                <button type="button" class="btn-secondary" onclick="inventoryManager.hideAddItemModal()">Cancel</button>
-              </div>
-            </form>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div class="stat-details">
+            <h3>Low Stock Items</h3>
+            <p id="lowStockItems">0</p>
           </div>
         </div>
-      </main>
-    </div>
-    <script src="/inventory.js"></script>
-    <script src="/script.js"></script>
-  </body>
+        <div class="stat-card">
+          <div class="stat-icon">
+            <i class="fas fa-money-bill-wave"></i>
+          </div>
+          <div class="stat-details">
+            <h3>Total Value</h3>
+            <p id="inventoryValue">Rs. 0.00</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="inventory-grid" id="inventoryGrid"></div>
+
+      <!-- Add/Edit Item Modal -->
+      <div id="addItemModal" class="modal">
+        <div class="modal-content">
+          <h2>Add New Item</h2>
+          <form id="itemForm">
+            <div class="form-group">
+              <label for="itemName">Item Name</label>
+              <input type="text" id="itemName" name="itemName" required>
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category" name="category" required>
+                <option value="Spices">Spices</option>
+                <option value="Grains">Grains</option>
+                <option value="Oils">Oils</option>
+                <option value="Pulses">Pulses</option>
+                <option value="Others">Others</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="stock">Stock</label>
+              <input type="number" id="stock" name="stock" min="0" step="0.01" required>
+            </div>
+            <div class="form-group">
+              <label for="unit">Unit</label>
+              <select id="unit" name="unit" required>
+                <option value="kg">Kilogram (kg)</option>
+                <option value="g">Gram (g)</option>
+                <option value="l">Liter (l)</option>
+                <option value="ml">Milliliter (ml)</option>
+                <option value="pcs">Pieces (pcs)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="price">Price per Unit</label>
+              <input type="number" id="price" name="price" min="0" step="0.01" required>
+            </div>
+            <div class="form-group">
+              <label for="minStock">Minimum Stock Level</label>
+              <input type="number" id="minStock" name="minStock" min="0" step="0.01" required>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn-primary">Save Item</button>
+              <button type="button" class="btn-secondary" onclick="inventoryManager.hideAddItemModal()">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="/inventory.js"></script>
+  <script src="/script.js"></script>
+</body>
+
 </html>

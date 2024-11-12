@@ -24,22 +24,24 @@
                     <i class="fas fa-chart-line"></i> <!-- Icon for Dashboard -->
                     <span>Dashboard</span>
                 </li>
-                <li data-page="inventory">
-                    <a href="inventory.html" style="display: flex; align-items: center; gap: 1rem; padding: 0rem; margin: 0.5rem 0; border-radius: 8px; cursor: pointer; text-decoration: none; color: inherit; transition: background-color 0.3s;">
-                    <i class="fas fa-boxes"></i> <!-- Icon for Inventory -->
-                    <span>Inventory</span>
-                    </a>
-                </li>
-                <li data-page="customers">
-                    <i class="fas fa-users"></i> <!-- Icon for Customers -->
-                    <span>Customers</span>
-                </li>
+                <a href="inventory.html">
+                    <li data-page="inventory">
+                        <i class="fas fa-boxes"></i> <!-- Icon for Inventory -->
+                        <span>Inventory</span>
+                    </li>
+                </a>
+                <a href="#">
+                    <li data-page="customers">
+                        <i class="fas fa-users"></i> <!-- Icon for Customers -->
+                        <span>Customers</span>
+                    </li>
+                </a>
+                <a href="accounts.html">
                 <li data-page="accounts">
-                    <a href="accounts.html" style="display: flex; align-items: center; gap: 1rem; padding: 0rem; margin: 0.5rem 0; border-radius: 8px; cursor: pointer; text-decoration: none; color: inherit; transition: background-color 0.3s;">
-                    <i class="fas fa-book-open"></i> <!-- Icon for Accounts -->
-                    <span>Accounts</span>
-                    </a>
-                </li>
+                        <i class="fas fa-book-open"></i> <!-- Icon for Accounts -->
+                        <span>Accounts</span>
+                    </li>
+                </a>
             </ul>
         </nav>
 
@@ -52,7 +54,8 @@
                 </div>
                 <div class="user-info">
                     <i class="fas fa-bell"></i> <!-- Notification Icon -->
-                    <img src="https://assets.codepen.io/t-1/user-avatar.jpg" alt="User  Avatar"> <!-- User Avatar Image -->
+                    <img src="https://assets.codepen.io/t-1/user-avatar.jpg" alt="User  Avatar">
+                    <!-- User Avatar Image -->
                 </div>
             </header>
 
@@ -62,7 +65,8 @@
                 <div class="stats-grid">
                     <!-- Statistics Cards -->
                     <div class="stat-card">
-                        <div class="stat-icon"><i class="fas fa-money-bill-wave"></i></div> <!-- Icon for Today's Sales -->
+                        <div class="stat-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <!-- Icon for Today's Sales -->
                         <div class="stat-details">
                             <h3>Today's Sales</h3>
                             <p>Rs. 25,450</p> <!-- Display Today's Sales Amount -->

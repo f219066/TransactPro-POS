@@ -51,19 +51,32 @@ body {
     list-style: none;
 }
 
-.nav-links li {
-    padding: 1rem;
+.nav-links li{
+    padding: 1rem; /* Keep padding on the anchor */
     margin: 0.5rem 0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    display: flex; /* Keep display flex for icon and text alignment */
+    align-items: center; /* Center align items */
+    gap: 1rem; /* Space between icon and text */
+    color: white; /* Inherit color from parent */
+    text-decoration: none; /* Remove underline */
+    border-radius: 8px; /* Optional: match li's border radius */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.nav-links li a {
+    padding: 1rem; /* Keep padding on the anchor */
+    margin: 0.5rem 0;
+    display: flex; /* Keep display flex for icon and text alignment */
+    align-items: center; /* Center align items */
+    gap: 1rem; /* Space between icon and text */
+    color: white; /* Inherit color from parent */
+    text-decoration: none; /* Remove underline */
+    border-radius: 8px; /* Optional: match li's border radius */
+    transition: background-color 0.3s; /* Transition for hover effect */
 }
 
 .nav-links li:hover,
-.nav-links li.active {
+.nav-links li.active{
     background-color: rgba(255, 255, 255, 0.1);
 }
 
